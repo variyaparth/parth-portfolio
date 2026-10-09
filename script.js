@@ -456,6 +456,84 @@
     observer.observe(aboutSection);
   }
 
+  // =========================================================================
+  // 8. NUMBER COUNT-UP ANIMATION FOR ABOUT STATS (ON SCROLL)
+  // =========================================================================
+  function initAboutStatsCounter() {
+    const statsGrid = document.getElementById('aboutStatsGrid');
+    if (!statsGrid) return;
+
+    const counterElements = statsGrid.querySelectorAll('.stat-glass-num');
+    let hasAnimated = false;
+
+    function runCounterAnimation() {
+      counterElements.forEach((el) => {
+        const targetAttr = el.getAttribute('data-counter-target');
+        const suffix = el.getAttribute('data-counter-suffix') || '';
+
+        if (targetAttr === 'infinity') {
+          el.classList.add('is-bloomed');
+          return;
+        }
+
+        const targetValue = parseFloat(targetAttr);
+        if (isNaN(targetValue)) return;
+
+        el.classList.add('is-counting');
+        const duration = 1400; // ms
+        const startTime = performance.now();
+
+        function updateCounter(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          // Smooth easeOutCubic
+          const easeProgress = 1 - Math.pow(1 - progress, 3);
+          const currentVal = Math.round(easeProgress * targetValue);
+
+          el.textContent = `${currentVal}${suffix}`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            el.textContent = `${targetValue}${suffix}`;
+            el.classList.remove('is-counting');
+          }
+        }
+
+        requestAnimationFrame(updateCounter);
+      });
+    }
+
+    function resetCounter() {
+      counterElements.forEach((el) => {
+        const targetAttr = el.getAttribute('data-counter-target');
+        const suffix = el.getAttribute('data-counter-suffix') || '';
+        if (targetAttr === 'infinity') {
+          el.classList.remove('is-bloomed');
+        } else {
+          el.textContent = `0${suffix}`;
+          el.classList.remove('is-counting');
+        }
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          hasAnimated = true;
+          runCounterAnimation();
+        } else if (entry.boundingClientRect.top > window.innerHeight) {
+          hasAnimated = false;
+          resetCounter();
+        }
+      });
+    }, {
+      threshold: 0.25
+    });
+
+    observer.observe(statsGrid);
+  }
+
   // Initialize all subsystems on DOM ready
   document.addEventListener('DOMContentLoaded', () => {
     initParallax();
@@ -464,6 +542,7 @@
     initNavigation();
     initProjectCardsInteractive();
     initAboutGenieScrollAnimation();
+    initAboutStatsCounter();
     initLiquidGlassCursor();
   });
 })();

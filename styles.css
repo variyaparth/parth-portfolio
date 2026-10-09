@@ -2009,14 +2009,43 @@ body.studio-dark .stat-glass-tile:hover {
 
 .stat-glass-num {
   font-family: var(--font-display);
-  font-size: 1.75rem;
-  font-weight: 900;
+  font-size: 1.85rem;
+  font-weight: 950;
   letter-spacing: -0.02em;
   color: var(--text-primary);
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.25s ease, color 0.25s ease;
 }
 
 body.studio-dark .stat-glass-num {
   color: #ffffff;
+}
+
+.stat-glass-num.is-counting {
+  color: var(--accent-blue);
+  text-shadow: 0 0 16px rgba(37, 99, 235, 0.4);
+}
+
+.stat-glass-num.infinity-node {
+  font-size: 2.1rem;
+  line-height: 1;
+}
+
+.stat-glass-num.infinity-node.is-bloomed {
+  animation: infinityBloom 2.4s infinite ease-in-out alternate;
+}
+
+@keyframes infinityBloom {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.15) rotate(4deg);
+    opacity: 1;
+    text-shadow: 0 0 16px rgba(37, 99, 235, 0.55);
+  }
 }
 
 .stat-glass-lbl {
