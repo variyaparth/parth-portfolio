@@ -1,0 +1,293 @@
+/**
+ * PARTH VARIYA — PORTFOLIO
+ * Liquid Glass Studio & Creative Experience
+ * Features: Responsive Parallax, macOS Dock Magnification, Studio Theme Switcher,
+ * Smooth Navigation & Liquid Glass Micro-Interactions
+ */
+
+(function () {
+  'use strict';
+
+  // State
+  let isSoundEnabled = true;
+
+  // Web Audio API for subtle tactile feedback
+  let audioCtx = null;
+  function playClickSound(freq = 600, duration = 0.04) {
+    if (!isSoundEnabled) return;
+    try {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.035, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch (e) {
+      // Audio not supported or blocked by browser policy
+    }
+  }
+
+  // =========================================================================
+  // 1. PARALLAX PHYSICS FOR HERO SECTION
+  // =========================================================================
+  function initParallax() {
+    const stage = document.getElementById('heroStage');
+    const centerSubject = document.getElementById('centerSubject');
+    const floorShadow = document.querySelector('.subject-floor-shadow');
+    const typoWrap = document.querySelector('.giant-typography-wrap');
+    const cardLeft = document.getElementById('cardLeft');
+    const cardRight = document.getElementById('cardRight');
+
+    if (!stage || !centerSubject) return;
+
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    const lerp = 0.08;
+
+    function onMouseMove(e) {
+      const rect = stage.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      // Normalized between -1 and 1
+      targetX = Math.max(-1, Math.min(1, (e.clientX - cx) / (rect.width / 2)));
+      targetY = Math.max(-1, Math.min(1, (e.clientY - cy) / (rect.height / 2)));
+    }
+
+    function onMouseLeave() {
+      targetX = 0;
+      targetY = 0;
+    }
+
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    stage.addEventListener('mouseleave', onMouseLeave);
+
+    // Continuous Animation Loop
+    function renderParallax() {
+      currentX += (targetX - currentX) * lerp;
+      currentY += (targetY - currentY) * lerp;
+
+      // 1. Center subject 3D Tilt
+      const rotY = currentX * 14; // degrees
+      const rotX = -currentY * 12; // degrees
+      const transX = currentX * 18;
+      const transY = currentY * 12;
+
+      centerSubject.style.transform = `translate3d(${transX}px, ${transY}px, 0) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+
+      // Floor Shadow shift
+      if (floorShadow) {
+        const shadowX = -currentX * 22;
+        const shadowScale = 1 - Math.abs(currentY) * 0.15;
+        floorShadow.style.transform = `translateX(calc(-50% + ${shadowX}px)) scale(${shadowScale})`;
+      }
+
+      // 2. Giant Typography Background Parallax (Counter-drift)
+      if (typoWrap) {
+        const typoX = -currentX * 16;
+        const typoY = -currentY * 10;
+        typoWrap.style.transform = `translate3d(${typoX}px, ${typoY}px, 0)`;
+      }
+
+      // 3. Floating Left Glass Card
+      if (cardLeft && window.innerWidth > 992) {
+        const leftX = currentX * 26;
+        const leftY = currentY * 20;
+        const leftRotX = -currentY * 6;
+        const leftRotY = currentX * 6;
+        cardLeft.style.transform = `translate3d(${leftX}px, ${leftY}px, 20px) rotateX(${leftRotX}deg) rotateY(${leftRotY}deg)`;
+      }
+
+      // 4. Floating Right Glass Card
+      if (cardRight && window.innerWidth > 992) {
+        const rightX = currentX * 28;
+        const rightY = currentY * 22;
+        const rightRotX = -currentY * 7;
+        const rightRotY = currentX * 7;
+        cardRight.style.transform = `translate3d(${rightX}px, ${rightY}px, 25px) rotateX(${rightRotX}deg) rotateY(${rightRotY}deg)`;
+      }
+
+      requestAnimationFrame(renderParallax);
+    }
+
+    renderParallax();
+  }
+
+  // =========================================================================
+  // 2. MACOS FLOATING DOCK MAGNIFICATION
+  // =========================================================================
+  function initDockMagnification() {
+    const dock = document.querySelector('.floating-dock-glass');
+    if (!dock) return;
+
+    const apps = dock.querySelectorAll('.dock-app');
+    const maxScale = 1.35;
+    const baseScale = 1.0;
+    const maxDistance = 90; // pixels
+
+    dock.addEventListener('mousemove', (e) => {
+      apps.forEach((app) => {
+        const rect = app.getBoundingClientRect();
+        const appCenter = rect.left + rect.width / 2;
+        const distance = Math.abs(e.clientX - appCenter);
+
+        if (distance < maxDistance) {
+          const ratio = (maxDistance - distance) / maxDistance;
+          const scale = baseScale + (maxScale - baseScale) * Math.sin((ratio * Math.PI) / 2);
+          const translateY = -10 * ratio;
+          app.style.transform = `translateY(${translateY}px) scale(${scale})`;
+        } else {
+          app.style.transform = `translateY(0) scale(1)`;
+        }
+      });
+    });
+
+    dock.addEventListener('mouseleave', () => {
+      apps.forEach((app) => {
+        app.style.transform = `translateY(0) scale(1)`;
+      });
+    });
+
+    apps.forEach((app) => {
+      app.addEventListener('click', () => {
+        playClickSound(800, 0.05);
+      });
+    });
+  }
+
+  // =========================================================================
+  // 3. STUDIO THEME TOGGLE (LIGHT / DARK)
+  // =========================================================================
+  function initThemeToggle() {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+
+    // Check localStorage or preferred scheme
+    const savedTheme = localStorage.getItem('pv_studio_theme');
+    if (savedTheme === 'dark') {
+      document.body.classList.add('studio-dark');
+      document.body.classList.remove('studio-light');
+    }
+
+    btn.addEventListener('click', () => {
+      playClickSound(850, 0.04);
+      if (document.body.classList.contains('studio-dark')) {
+        document.body.classList.remove('studio-dark');
+        document.body.classList.add('studio-light');
+        localStorage.setItem('pv_studio_theme', 'light');
+      } else {
+        document.body.classList.add('studio-dark');
+        document.body.classList.remove('studio-light');
+        localStorage.setItem('pv_studio_theme', 'dark');
+      }
+    });
+  }
+
+  // =========================================================================
+  // 4. NAVIGATION, PAGINATION & SCROLL SPY
+  // =========================================================================
+  function initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const paginationDots = document.querySelectorAll('.pagination-dots .dot');
+    const sections = document.querySelectorAll('section[id], footer[id]');
+
+    function updateActiveNav() {
+      const scrollPos = window.scrollY + 220;
+      sections.forEach((sec) => {
+        const id = sec.getAttribute('id');
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          navLinks.forEach((l) => {
+            if (l.getAttribute('href') === `#${id}`) {
+              l.classList.add('active');
+            } else {
+              l.classList.remove('active');
+            }
+          });
+
+          paginationDots.forEach((dot) => {
+            if (dot.getAttribute('data-target') === id) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+
+    paginationDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const targetId = dot.getAttribute('data-target');
+        const targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+          playClickSound(650, 0.04);
+        }
+      });
+    });
+
+    const exploreBtn = document.getElementById('btnExploreWork');
+    if (exploreBtn) {
+      exploreBtn.addEventListener('click', () => {
+        playClickSound(700, 0.05);
+      });
+    }
+
+    // Add subtle click feedback to all project links
+    document.querySelectorAll('.view-project-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        playClickSound(750, 0.05);
+      });
+    });
+  }
+
+  // =========================================================================
+  // 5. LIQUID GLASS 3D HOVER TILT FOR PROJECT CARDS
+  // =========================================================================
+  function initProjectCardsInteractive() {
+    if (window.innerWidth < 992) return; // Skip on mobile/touch
+
+    const cards = document.querySelectorAll('.liquid-card');
+    cards.forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotX = -((y - centerY) / centerY) * 4;
+        const rotY = ((x - centerX) / centerX) * 4;
+
+        card.style.transform = `perspective(1000px) translateY(-5px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // Initialize all subsystems on DOM ready
+  document.addEventListener('DOMContentLoaded', () => {
+    initParallax();
+    initDockMagnification();
+    initThemeToggle();
+    initNavigation();
+    initProjectCardsInteractive();
+  });
+})();

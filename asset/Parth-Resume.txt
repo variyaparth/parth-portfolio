@@ -1,0 +1,119 @@
+================================================================================
+                        PARTH VARIYA
+                      Vibe Coder | Developer
+================================================================================
+
+Email: parthvariya10@gmail.com
+GitHub: https://github.com/variyaparth
+LinkedIn: https://www.linkedin.com/in/parth-variya-93bbb5267/
+X/Twitter: https://x.com/parthvariya13
+Instagram: https://www.instagram.com/yng_.parth/
+Location: Surat, India
+
+
+================================================================================
+                            SUMMARY
+================================================================================
+
+17-year-old passionate Web Developer and Vibe Coder, committed to creating 
+beautiful, interactive digital experiences. Focused on writing clean code, 
+smooth animations, and modern design. Quick learner with a strong drive to 
+build innovative projects.
+
+
+================================================================================
+                          SKILLS & TECH
+================================================================================
+
+Languages & Frontend:
+  • HTML5, CSS3 (Modern Styling, Responsive Design)
+  • JavaScript (ES6+, DOM Manipulation, Events)
+  • React (Components, Hooks, State Management)
+
+Backend & Tools:
+  • Node.js
+  • MongoDB, SQL
+  • Git & GitHub
+  • REST APIs
+
+Other Skills:
+  • UI/UX Design
+  • Computer Vision (OpenCV)
+  • Gesture Control & Automation
+  • Web Animation & Smooth Transitions
+  • Mobile-Responsive Design
+
+
+================================================================================
+                          FEATURED PROJECTS
+================================================================================
+
+1. SyncTube
+   • Watch together experience with synchronized playback
+   • Real-time interaction and smooth playback sync
+   • Technologies: JavaScript, Web APIs, Real-time Communication
+
+2. gesturedrive-ai
+   • AI-powered gesture detection for hands-free control
+   • Computer Vision-based automation
+   • Technologies: Python, OpenCV, AI
+
+3. AirCanvas
+   • Draw in the air using gesture input
+   • Real-time visual feedback for creative interaction
+   • Technologies: Computer Vision, OpenCV, Python
+
+4. vmouse
+   • Virtual mouse control using gesture recognition
+   • Hands-free automation system
+   • Technologies: Gesture Control, Automation, Computer Vision
+
+5. message
+   • Clean, intuitive messaging application
+   • Modern frontend with smooth interactions
+   • Technologies: JavaScript, Frontend, UI/UX
+
+6. Aura
+   • Polished UI with smooth animations
+   • Modern digital experience showcase
+   • Technologies: UI/UX, Web Design, Animations
+
+More projects: github.com/variyaparth
+
+
+================================================================================
+                           EDUCATION
+================================================================================
+
+GTU Student (Gujarat Technological University)
+• Currently pursuing higher education
+• Focused on web development and computer science
+
+
+================================================================================
+                          ABOUT ME
+================================================================================
+
+🎓 GTU student passionate about technology
+💻 Vibe coder focusing on beautiful, functional web experiences
+⚡ Turning ideas into reality through code and design
+🚀 Continuous learner and builder
+
+When not coding: Exploring design trends, experimenting with animations,
+and enjoying the creative process of bringing ideas to life.
+
+
+================================================================================
+                           CONTACT
+================================================================================
+
+Email:    parthvariya10@gmail.com
+GitHub:   github.com/variyaparth
+LinkedIn: linkedin.com/in/parth-variya-93bbb5267/
+X/Twitter: x.com/parthvariya13
+Instagram: instagram.com/yng_.parth/
+
+
+================================================================================
+Last Updated: March 2026
+===============================================================================

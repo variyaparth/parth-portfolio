@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parth Variya — Portfolio &amp; 3D Project Vault</title>
+  <meta name="description"
+    content="Portfolio of Parth Variya — Creative Frontend Developer &amp; AI Builder. Explore interactive 3D project folders, computer vision experiments, and case studies.">
+  <meta name="author" content="Parth Variya">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:title" content="Parth Variya — Creative Frontend Developer &amp; AI Builder">
+  <meta property="og:description"
+    content="Explore interactive 3D project folders, real-time apps, and computer vision experiments by Parth Variya.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="asset/IMG-20260828-WA0004.jpg">
+
+  <!-- Google Fonts: Space Grotesk & JetBrains Mono (Futuristic Cyber & Developer Pairing) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=20261009_dock">
+</head>
+
+<body class="studio-light">
+
+  <!-- Studio Background Ambient Lighting & Grid -->
+  <div class="studio-bg">
+    <div class="studio-spotlight spotlight-center"></div>
+    <div class="studio-spotlight spotlight-left"></div>
+    <div class="studio-spotlight spotlight-right"></div>
+    <div class="studio-grain"></div>
+  </div>
+
+  <!-- Global Header / Navigation -->
+  <header class="navbar" id="navbar">
+    <a href="#hero" class="nav-brand">
+      <span class="brand-monogram">PV</span>
+      <span class="brand-text">PARTH VARIYA</span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#hero" class="nav-link active" data-section="hero">Hero</a>
+      <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+      <a href="#about" class="nav-link" data-section="about">About</a>
+      <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <div class="status-pill" title="Open to opportunities &amp; collaborations">
+        <span class="status-dot"></span>
+        <span class="status-text">Available for Work</span>
+      </div>
+
+      <button id="themeToggle" class="icon-btn" aria-label="Toggle Dark / Light Studio" title="Toggle Studio Lighting">
+        <svg class="sun-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+          stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+
+      <a href="asset/Parth-Resume.txt" download="Parth-Resume.txt" class="resume-btn" title="Download Resume">
+        <span>Resume</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN SCROLL CONTAINER -->
+  <main class="page-container">
+
+    <!-- ===================================================================
+         SECTION 1: HERO (DIRECT REFERENCE RECREATION)
+         Massive PORTFOLIO typography, Parallax central portrait, 
+         Left Glass Bio Card, Right Glass Skills Card, Bottom macOS Glass Dock
+         =================================================================== -->
+    <section class="hero-section" id="hero">
+
+      <!-- Parallax Typography Stage -->
+      <div class="hero-stage" id="heroStage">
+
+        <!-- Giant Bold Typography in the Background -->
+        <div class="giant-typography-wrap" data-depth="0.15">
+          <h1 class="giant-portfolio-title">PORTFÓLIO</h1>
+          <div class="giant-meta-row">
+            <span class="meta-author">PARTH VARIYA</span>
+            <span class="meta-year">2026</span>
+          </div>
+        </div>
+
+        <!-- Central Subject Layer with Dynamic 3D Parallax & Floor Shadows -->
+        <div class="hero-center-subject" id="centerSubject" data-depth="0.35">
+          <div class="subject-card-shell">
+            <div class="subject-inner-glow"></div>
+            <!-- Parth Variya's actual photo -->
+            <img src="asset/image .png" alt="Parth Variya — Creative Developer" class="subject-img" id="heroPhoto" />
+            <div class="subject-lens-flare"></div>
+            <!-- Subtle interactive status overlay badge -->
+            <div class="subject-badge">
+              <span class="badge-pulse"></span>
+              <span>Parth Variya &bull; Creative Coder</span>
+            </div>
+          </div>
+          <!-- Floor Ambient Contact Shadow -->
+          <div class="subject-floor-shadow"></div>
+        </div>
+
+        <!-- Left Glassmorphism Card: Bio & Mission -->
+        <aside class="glass-card glass-card-left" id="cardLeft" data-depth="0.6">
+          <div class="card-header-badge">
+            <span class="badge-dot-blue"></span>
+            <span class="badge-title">Developer &amp; AI Explorer</span>
+          </div>
+          <p class="card-bio-text">
+            Transforming ideas into interactive digital experiences. Focused on creative frontends, computer vision, AI
+            experiments, and modern web interfaces with clean JavaScript and thoughtful design.
+          </p>
+          <a href="#projects" class="pill-action-btn" id="btnExploreWork">
+            <span>Explore my work</span>
+            <svg viewBox="0 0 20 20" width="16" height="16" fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd" />
+            </svg>
+          </a>
+        </aside>
+
+        <!-- Right Glassmorphism Card: Key Expertise / Habilidades -->
+        <aside class="glass-card glass-card-right" id="cardRight" data-depth="0.65">
+          <h3 class="skills-card-title">Skills</h3>
+          <div class="skills-pill-list">
+            <div class="skill-pill-item highlight-red">
+              <span class="star-icon">★</span>
+              <span class="skill-name">Frontend Architecture</span>
+            </div>
+            <div class="skill-pill-item">
+              <span class="star-icon">★</span>
+              <span class="skill-name">Computer Vision (AI)</span>
+            </div>
+            <div class="skill-pill-item">
+              <span class="star-icon">★</span>
+              <span class="skill-name">React &amp; Modern UI</span>
+            </div>
+            <div class="skill-pill-item">
+              <span class="star-icon">★</span>
+              <span class="skill-name">Gesture Control UX</span>
+            </div>
+            <div class="skill-pill-item">
+              <span class="star-icon">★</span>
+              <span class="skill-name">Real-Time WebSockets</span>
+            </div>
+            <div class="skill-pill-item">
+              <span class="star-icon">★</span>
+              <span class="skill-name">Motion &amp; 3D Design</span>
+            </div>
+          </div>
+        </aside>
+
+      </div><!-- /hero-stage -->
+
+      <!-- Floating macOS Glass Dock: Tools & Software Requested by User -->
+      <div class="floating-dock-container" id="softwareDock">
+        <div class="floating-dock-glass">
+
+          <!-- 1. Figma -->
+          <div class="dock-app" data-tooltip="Figma — Interface Design &amp; Systems">
+            <div class="dock-icon-wrapper figma-bg">
+              <img src="asset/figma.webp" alt="Figma" class="dock-app-icon" loading="lazy">
+            </div>
+            <span class="dock-app-label">Figma</span>
+          </div>
+
+          <!-- 2. Figma Make -->
+          <div class="dock-app" data-tooltip="Figma Make — AI Generative Layouts">
+            <div class="dock-icon-wrapper figmamake-bg">
+              <img src="asset/figma%20make.png" alt="Figma Make" class="dock-app-icon" style="object-fit: contain; padding: 3px;" loading="lazy">
+            </div>
+            <span class="dock-app-label">Figma Make</span>
+          </div>
+
+          <!-- 3. ChatGPT -->
+          <div class="dock-app" data-tooltip="ChatGPT — OpenAI LLMs &amp; AI Intelligence">
+            <div class="dock-icon-wrapper openai-bg">
+              <img src="asset/chatgpt.webp" alt="ChatGPT" class="dock-app-icon" style="width: 26px; height: 26px; object-fit: contain;" loading="lazy">
+            </div>
+            <span class="dock-app-label">ChatGPT</span>
+          </div>
+
+          <!-- 4. Claude -->
+          <div class="dock-app" data-tooltip="Claude — Anthropic AI &amp; Code Intelligence">
+            <div class="dock-icon-wrapper claude-bg">
+              <img src="asset/claude.webp" alt="Claude" class="dock-app-icon" loading="lazy">
+            </div>
+            <span class="dock-app-label">Claude</span>
+          </div>
+
+          <!-- 5. Framer -->
+          <div class="dock-app" data-tooltip="Framer — Interactive Motion &amp; Web Design">
+            <div class="dock-icon-wrapper framer-bg">
+              <img src="asset/framer.png" alt="Framer" class="dock-app-icon" style="width: 24px; height: 24px; object-fit: contain;" loading="lazy">
+            </div>
+            <span class="dock-app-label">Framer</span>
+          </div>
+
+          <!-- 6. After Effects -->
+          <div class="dock-app" data-tooltip="Adobe After Effects — Motion Graphics &amp; VFX">
+            <div class="dock-icon-wrapper ae-bg">
+              <img src="asset/after%20effect.webp" alt="After Effects" class="dock-app-icon" loading="lazy">
+            </div>
+            <span class="dock-app-label">After Effects</span>
+          </div>
+
+          <!-- 7. Google Antigravity -->
+          <div class="dock-app" data-tooltip="Google Antigravity — Agentic Dev Platform">
+            <div class="dock-icon-wrapper antigravity-bg">
+              <img src="asset/antigravity.jpeg" alt="Antigravity" class="dock-app-icon" loading="lazy">
+            </div>
+            <span class="dock-app-label">Antigravity</span>
+          </div>
+
+          <!-- 8. GitHub -->
+          <div class="dock-app" data-tooltip="GitHub — Repositories &amp; Open Source">
+            <a href="https://github.com/variyaparth" target="_blank" rel="noopener noreferrer"
+              class="dock-icon-wrapper github-bg" style="text-decoration:none; display:flex;">
+              <img src="asset/github.png" alt="GitHub" class="dock-app-icon" loading="lazy">
+            </a>
+            <span class="dock-app-label">GitHub</span>
+          </div>
+
+        </div><!-- /floating-dock-glass -->
+      </div><!-- /floating-dock-container -->
+
+      <!-- Pagination Indicators & Scroll Hint -->
+      <div class="hero-bottom-bar">
+        <div class="pagination-dots">
+          <button class="dot active" data-target="hero" aria-label="Slide 1: Hero"></button>
+          <button class="dot" data-target="projects" aria-label="Slide 2: Projects"></button>
+        </div>
+        <a href="#projects" class="scroll-down-hint" id="scrollDownIndicator">
+          <span>Scroll to explore creations</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <polyline points="19 12 12 19 5 12"></polyline>
+          </svg>
+        </a>
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================================
+         SECTION 2: FEATURED CREATIONS / PROJECTS
+         Only the 4 verified projects from Parth_Variya_Portfolio_Details.txt:
+         1. TextOConnect (Featured Project - Visually Larger)
+         2. AI Personal Fashion Stylist
+         3. SignSpot
+         4. ASCII Image Converter
+         =================================================================== -->
+    <section class="projects-section" id="projects">
+      
+      <div class="projects-section-header">
+        <span class="projects-badge-pill">THIS IS MY CREATION ✨</span>
+        <h2 class="projects-headline">Featured Projects</h2>
+        <p class="projects-subtitle">A curated selection of real-world platforms, AI applications, and creative tools built to turn ideas into impactful digital products.</p>
+      </div>
+
+      <div class="projects-container">
+
+        <!-- ROW 1: FEATURED PROJECT (TextOConnect - Full Width, Visually Larger) -->
+        <article class="liquid-card featured-project-card">
+          <div class="card-badge-row">
+            <span class="pill-featured">★ FEATURED PROJECT</span>
+            <span class="pill-category">Built for the Textile Industry</span>
+          </div>
+
+          <div class="featured-card-body">
+            <div class="featured-text-col">
+              <span class="project-tagline-mono">Connect. Collaborate. Grow.</span>
+              <h3 class="project-main-title featured-main-title">TextOConnect</h3>
+              <p class="project-subheading">The Digital Home for Textile Professionals &bull; Connecting Every Thread</p>
+              
+              <p class="project-description">
+                A platform connecting textile workers, businesses, manufacturers, distributors, and partners.
+              </p>
+
+              <div class="featured-highlights-grid">
+                <div class="highlight-bullet">
+                  <span class="h-dot"></span>
+                  <span>Discover jobs, services, products and opportunities</span>
+                </div>
+                <div class="highlight-bullet">
+                  <span class="h-dot"></span>
+                  <span>Connect with workers, businesses and partners</span>
+                </div>
+                <div class="highlight-bullet">
+                  <span class="h-dot"></span>
+                  <span>Grow your network and expand industry reach</span>
+                </div>
+                <div class="highlight-bullet">
+                  <span class="h-dot"></span>
+                  <span>Simplify your textile journey in one smart platform</span>
+                </div>
+              </div>
+
+              <div class="card-action-bar">
+                <a href="https://textoconnect.framer.website/" target="_blank" rel="noopener noreferrer" class="view-project-btn primary-btn">
+                  <span>View Project</span>
+                  <span class="btn-arrow">&rarr;</span>
+                </a>
+                <span class="card-url-hint">textoconnect.framer.website</span>
+              </div>
+            </div>
+
+            <div class="featured-preview-col">
+              <div class="window-preview-frame">
+                <div class="window-preview-bar">
+                  <div class="traffic-lights">
+                    <span class="t-dot red"></span>
+                    <span class="t-dot yellow"></span>
+                    <span class="t-dot green"></span>
+                  </div>
+                  <span class="window-url">textoconnect.framer.website</span>
+                </div>
+                <div class="window-preview-content">
+                  <div class="window-brand">TextOConnect</div>
+                  <div class="window-quote">&ldquo;Connect. Collaborate. Grow.&rdquo;</div>
+                  <div class="window-tag-pills">
+                    <span class="w-pill">Workers</span>
+                    <span class="w-pill">Businesses</span>
+                    <span class="w-pill">Manufacturers</span>
+                    <span class="w-pill">Distributors</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ROW 2: 2-COLUMN GRID (AI Personal Fashion Stylist | SignSpot) -->
+        <div class="projects-two-col-grid">
+
+          <!-- PROJECT 2: AI Personal Fashion Stylist -->
+          <article class="liquid-card standard-project-card">
+            <div class="card-badge-row">
+              <span class="pill-category">AI Personal Styling</span>
+            </div>
+            
+            <div class="card-body-content">
+              <h3 class="project-main-title standard-main-title">AI Personal Fashion Stylist</h3>
+              <p class="project-description">
+                AI-powered personal fashion stylist providing personalized wardrobe recommendations using image analysis, body proportions, and color theory.
+              </p>
+            </div>
+
+            <div class="card-action-bar">
+              <a href="https://aura-fashioartist.vercel.app/" target="_blank" rel="noopener noreferrer" class="view-project-btn secondary-btn">
+                <span>View Project</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
+              <span class="card-url-hint">aura-fashioartist.vercel.app</span>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: SignSpot -->
+          <article class="liquid-card standard-project-card">
+            <div class="card-badge-row">
+              <span class="pill-category">Surat &bull; Local Advertising</span>
+            </div>
+            
+            <div class="card-body-content">
+              <h3 class="project-main-title standard-main-title">SignSpot</h3>
+              <p class="project-description">
+                A Surat-focused platform for booking sign and banner holders at busy locations with flexible hours and transparent rates.
+              </p>
+            </div>
+
+            <div class="card-action-bar">
+              <a href="https://signspot-kappa.vercel.app/" target="_blank" rel="noopener noreferrer" class="view-project-btn secondary-btn">
+                <span>View Project</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
+              <span class="card-url-hint">signspot-kappa.vercel.app</span>
+            </div>
+          </article>
+
+        </div><!-- /projects-two-col-grid -->
+
+        <!-- ROW 3: FULL WIDTH (ASCII Image Converter) -->
+        <article class="liquid-card wide-project-card">
+          <div class="wide-card-layout">
+            <div class="wide-text-col">
+              <div class="card-badge-row">
+                <span class="pill-category">Google AI Studio Project</span>
+              </div>
+              <h3 class="project-main-title standard-main-title">ASCII Image Converter</h3>
+              <p class="project-description">
+                ASCII image converter / Google AI Studio project.
+              </p>
+            </div>
+
+            <div class="wide-action-col">
+              <div class="card-action-bar">
+                <a href="https://ascii-rho-ecru.vercel.app/" target="_blank" rel="noopener noreferrer" class="view-project-btn secondary-btn">
+                  <span>View Project</span>
+                  <span class="btn-arrow">&rarr;</span>
+                </a>
+                <span class="card-url-hint">ascii-rho-ecru.vercel.app</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- /projects-container -->
+    </section>
+
+    <!-- ===================================================================
+         SECTION 3: ABOUT ME & STATS
+         =================================================================== -->
+    <section class="about-section" id="about">
+      <div class="about-grid">
+
+        <div class="about-card glass-panel">
+          <span class="section-pill">About The Developer</span>
+          <h2 class="about-title">Parth Variya — Vibe Coder &amp; Creative Engineer</h2>
+          <p class="about-body">
+            I'm a frontend developer based in Surat, Gujarat, India, currently pursuing higher education at GTU (Gujarat
+            Technological University). My focus centers on writing clean JavaScript, crafting fluid responsive
+            interfaces, and exploring bleeding-edge AI &amp; computer vision experiments.
+          </p>
+          <p class="about-body">
+            I believe that great software is born at the intersection of aesthetic intuition and robust architecture.
+            When I'm not writing code or testing hand-pose models, I'm analyzing new motion design trends and pushing
+            web technologies to their limits.
+          </p>
+
+          <div class="stats-row">
+            <div class="stat-box">
+              <span class="stat-number">10K+</span>
+              <span class="stat-label">Lines of Code</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">7+</span>
+              <span class="stat-label">Key Projects</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Obsession with Polish</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number">&infin;</span>
+              <span class="stat-label">Continuous Learning</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="education-card glass-panel">
+          <span class="section-pill">Education &amp; Background</span>
+          <h3 class="edu-heading">Gujarat Technological University (GTU)</h3>
+          <p class="edu-sub">Diploma / Engineering Studies in Computer Science</p>
+          <p class="edu-desc">Deepening foundations in data structures, algorithms, frontend systems, software
+            engineering principles, and autonomous AI pipelines.</p>
+
+          <div class="connect-box">
+            <h4 class="connect-title">Connect Directly</h4>
+            <div class="social-tags-list">
+              <a href="mailto:parthvariya10@gmail.com" class="social-tag">
+                <span>✉ parthvariya10@gmail.com</span>
+              </a>
+              <a href="https://github.com/variyaparth" target="_blank" rel="noopener noreferrer" class="social-tag">
+                <span>🐙 github.com/variyaparth</span>
+              </a>
+              <a href="https://x.com/parthvariya13" target="_blank" rel="noopener noreferrer" class="social-tag">
+                <span>𝕏 @parthvariya13</span>
+              </a>
+              <a href="https://www.linkedin.com/in/parth-variya-93bbb5267/" target="_blank" rel="noopener noreferrer"
+                class="social-tag">
+                <span>💼 LinkedIn Profile</span>
+              </a>
+              <a href="https://www.instagram.com/yng_.parth/" target="_blank" rel="noopener noreferrer"
+                class="social-tag">
+                <span>📸 @yng_.parth</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SECTION 4: CONTACT & FOOTER
+         =================================================================== -->
+    <footer class="footer-section" id="contact">
+      <div class="footer-container glass-panel">
+        <div class="footer-hero-text">
+          <h2 class="footer-headline">Have a vision for something extraordinary?</h2>
+          <p class="footer-subheadline">Let's collaborate on creative frontends, AI experiments, or production web apps.
+          </p>
+          <div class="footer-cta-row">
+            <a href="mailto:parthvariya10@gmail.com" class="footer-primary-btn">
+              <span>Send Me an Email</span>
+              <svg viewBox="0 0 20 20" width="18" height="18" fill="currentColor">
+                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+              </svg>
+            </a>
+            <a href="https://github.com/variyaparth?tab=repositories" target="_blank" rel="noopener noreferrer"
+              class="footer-secondary-btn">
+              <span>Explore All Repositories on GitHub &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-bottom-line">
+          <div class="footer-copy">
+            &copy; 2026 <strong>Parth Variya</strong>. All rights reserved. Crafted with clean HTML5, Vanilla CSS3 &amp;
+            JavaScript.
+          </div>
+          <div class="footer-loc">
+            <span>📍 Surat, Gujarat, India</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Interactive Project Simulator Script -->
+  <script src="script.js"></script>
+</body>
+
+</html>
