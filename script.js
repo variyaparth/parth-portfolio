@@ -407,7 +407,7 @@
     });
 
     // Elements that trigger the hover ring (like in the video reference)
-    const interactiveQuery = 'a, button, .dock-app, .liquid-card, .stat-box, .social-tag, .skill-pill-item, input, textarea, select, [role="button"], .dot, .scroll-down-hint, .view-project-btn, .status-pill, .resume-btn, .nav-brand';
+    const interactiveQuery = 'a, button, .dock-app, .liquid-card, .stat-box, .social-tag, .skill-pill-item, input, textarea, select, [role="button"], .dot, .scroll-down-hint, .view-project-btn, .status-pill, .resume-btn, .nav-brand, .outreach-channel-link, .stat-glass-tile';
 
     document.addEventListener('mouseover', (e) => {
       if (e.target.closest(interactiveQuery)) {

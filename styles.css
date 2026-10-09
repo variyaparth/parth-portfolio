@@ -1724,152 +1724,428 @@ body.studio-dark .s-tag {
 
 /* ==========================================================================
    SECTION 3: ABOUT ME & STATS
+   Liquid Glass macOS Studio Cards for Developer Bio, GTU Education & Social Matrix
    ========================================================================== */
 .about-section {
   width: 100%;
-  max-width: 1440px;
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 40px 24px 60px;
+  padding: 80px 24px 110px;
+}
+
+.about-section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+
+.about-badge-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-blue);
+  background: var(--accent-blue-soft);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.about-giant-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 950;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--text-primary);
+  margin: 0 0 14px 0;
+}
+
+body.studio-dark .about-giant-headline {
+  color: #ffffff;
+}
+
+.about-subtitle {
+  font-size: 1.02rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  max-width: 620px;
+  margin: 0 auto;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.25fr 0.95fr;
   gap: 28px;
+  align-items: stretch;
 }
 
-.about-card,
-.education-card {
-  padding: 38px 36px;
+/* macOS Window Glass Cards for About Section */
+.mac-about-card,
+.mac-edu-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.section-pill {
+.mac-about-card:hover,
+.mac-edu-card:hover {
+  transform: translateY(-4px);
+}
+
+.about-window-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.about-location-chip,
+.about-badge-small {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.about-card-content,
+.edu-card-content {
+  padding: 32px 34px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.about-role-pill {
   display: inline-block;
+  align-self: flex-start;
+  font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--accent-blue);
   background: var(--accent-blue-soft);
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 999px;
-  margin-bottom: 16px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  margin-bottom: 12px;
 }
 
-.about-title {
+.about-name-title {
   font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-  font-weight: 800;
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  font-weight: 900;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 16px;
+  margin: 0 0 16px 0;
 }
 
-.about-body {
-  font-size: 0.95rem;
+body.studio-dark .about-name-title {
+  color: #ffffff;
+}
+
+.about-lead-text {
+  font-size: 0.94rem;
   line-height: 1.7;
   color: var(--text-secondary);
-  margin-bottom: 16px;
+  margin: 0 0 14px 0;
 }
 
-.stats-row {
+/* Glass Stat Tiles */
+.stats-glass-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 28px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 24px;
   padding-top: 24px;
-  border-top: 1px solid var(--glass-border-subtle);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.stat-box {
+body.studio-dark .stats-glass-grid {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-glass-tile {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 18px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  transition: all 0.25s ease;
 }
 
-.stat-number {
-  font-family: var(--font-mono);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-primary);
+body.studio-dark .stat-glass-tile {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.stat-glass-tile:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+body.studio-dark .stat-glass-tile:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.stat-glass-num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 900;
   letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
-.stat-label {
+body.studio-dark .stat-glass-num {
+  color: #ffffff;
+}
+
+.stat-glass-lbl {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
   color: var(--text-muted);
   letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
-.edu-heading {
-  font-family: var(--font-sans);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 4px;
+/* Right Card: Education Sub-Box */
+.edu-inner-glass-box {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin-bottom: 22px;
 }
 
-.edu-sub {
-  font-size: 0.85rem;
-  font-weight: 600;
+body.studio-dark .edu-inner-glass-box {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.edu-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.edu-badge-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 800;
   color: var(--accent-blue);
-  margin-bottom: 12px;
+  letter-spacing: 0.1em;
 }
 
-.edu-desc {
-  font-size: 0.88rem;
+.edu-year-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.edu-uni-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin: 0 0 4px 0;
+}
+
+body.studio-dark .edu-uni-title {
+  color: #ffffff;
+}
+
+.edu-degree-sub {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin: 0 0 10px 0;
+}
+
+.edu-details-text {
+  font-size: 0.86rem;
   line-height: 1.6;
   color: var(--text-secondary);
-  margin-bottom: 24px;
+  margin: 0 0 14px 0;
 }
 
-.connect-box {
-  padding-top: 20px;
-  border-top: 1px solid var(--glass-border-subtle);
+.edu-topics-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
 }
 
-.connect-title {
-  font-size: 0.88rem;
+.topic-chip {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+body.studio-dark .topic-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Outreach Social Channels */
+.outreach-glass-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.outreach-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4px;
+}
+
+.outreach-heading {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.outreach-status {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 12px;
+  color: #10b981;
 }
 
-.social-tags-list {
+.outreach-links-grid {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.social-tag {
+.outreach-channel-link {
   display: flex;
   align-items: center;
-  padding: 8px 14px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid var(--glass-border-subtle);
-  color: var(--text-primary);
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   text-decoration: none;
-  font-size: 0.82rem;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text-primary);
 }
 
-body.studio-dark .social-tag {
-  background: rgba(255, 255, 255, 0.05);
+body.studio-dark .outreach-channel-link {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
-.social-tag:hover {
-  background: rgba(255, 255, 255, 0.75);
+.outreach-channel-link:hover {
   transform: translateX(4px);
+  background: rgba(255, 255, 255, 0.95);
+  border-color: var(--accent-blue);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.1);
+}
+
+body.studio-dark .outreach-channel-link:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(96, 165, 250, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.channel-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.channel-icon {
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+}
+
+.channel-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-name {
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.channel-handle {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+body.studio-dark .channel-handle {
+  color: #ffffff;
+}
+
+.channel-arrow {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.outreach-channel-link:hover .channel-arrow {
+  transform: translateX(3px);
   color: var(--accent-blue);
 }
 
-body.studio-dark .social-tag:hover {
-  background: rgba(255, 255, 255, 0.12);
+/* Responsive adjustments for About Section */
+@media (max-width: 992px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 60px 16px 80px;
+  }
+
+  .about-card-content,
+  .edu-card-content {
+    padding: 24px 20px;
+  }
+
+  .stats-glass-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* ==========================================================================
