@@ -282,6 +282,104 @@
     });
   }
 
+  // =========================================================================
+  // 6. LIQUID GLASS CUSTOM CURSOR WITH DOTTED HOVER RING
+  // =========================================================================
+  function initLiquidGlassCursor() {
+    // Only run on desktop devices with fine pointer
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    const wrapper = document.getElementById('liquidCursor');
+    const follower = document.getElementById('cursorFollower');
+    const dot = document.getElementById('cursorDot');
+    const orb = document.getElementById('glassOrb');
+    if (!wrapper || !follower || !dot) return;
+
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+    let followerX = targetX;
+    let followerY = targetY;
+    let dotX = targetX;
+    let dotY = targetY;
+    let isVisible = false;
+
+    // Fluid requestAnimationFrame render loop with liquid spring physics
+    function loop() {
+      // Fluid physics: follower has liquid spring lag
+      followerX += (targetX - followerX) * 0.16;
+      followerY += (targetY - followerY) * 0.16;
+
+      // Inner dot has fast tactile response
+      dotX += (targetX - dotX) * 0.75;
+      dotY += (targetY - dotY) * 0.75;
+
+      // Liquid stretch deformation based on motion velocity
+      const vx = targetX - followerX;
+      const vy = targetY - followerY;
+      const speed = Math.sqrt(vx * vx + vy * vy);
+      const angle = Math.atan2(vy, vx) * (180 / Math.PI);
+      const stretch = Math.min(speed * 0.002, 0.22);
+
+      follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0) translate(-50%, -50%)`;
+      if (orb) {
+        orb.style.transform = `rotate(${angle}deg) scale(${1 + stretch}, ${1 - stretch * 0.5})`;
+      }
+      dot.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate(-50%, -50%)`;
+
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+
+    // Track mouse coordinates
+    window.addEventListener('mousemove', (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+      if (!isVisible) {
+        isVisible = true;
+        wrapper.classList.add('is-active');
+      }
+    });
+
+    document.addEventListener('mouseleave', () => {
+      isVisible = false;
+      wrapper.classList.remove('is-active');
+    });
+
+    document.addEventListener('mouseenter', () => {
+      isVisible = true;
+      wrapper.classList.add('is-active');
+    });
+
+    window.addEventListener('mousedown', () => {
+      follower.classList.add('is-clicking');
+      dot.classList.add('is-clicking');
+    });
+
+    window.addEventListener('mouseup', () => {
+      follower.classList.remove('is-clicking');
+      dot.classList.remove('is-clicking');
+    });
+
+    // Elements that trigger the hover ring (like in the video reference)
+    const interactiveQuery = 'a, button, .dock-app, .liquid-card, .stat-box, .social-tag, .skill-pill-item, input, textarea, select, [role="button"], .dot, .scroll-down-hint, .view-project-btn, .status-pill, .resume-btn, .nav-brand';
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest(interactiveQuery)) {
+        follower.classList.add('is-hovering');
+        dot.classList.add('is-hovering');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target.closest(interactiveQuery)) {
+        if (!e.relatedTarget || !e.relatedTarget.closest(interactiveQuery)) {
+          follower.classList.remove('is-hovering');
+          dot.classList.remove('is-hovering');
+        }
+      }
+    });
+  }
+
   // Initialize all subsystems on DOM ready
   document.addEventListener('DOMContentLoaded', () => {
     initParallax();
@@ -289,5 +387,6 @@
     initThemeToggle();
     initNavigation();
     initProjectCardsInteractive();
+    initLiquidGlassCursor();
   });
 })();
