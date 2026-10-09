@@ -426,6 +426,55 @@
     });
   }
 
+  // =========================================================================
+  // 7. macOS GENIE EFFECT ON SCROLL (ABOUT SECTION)
+  // =========================================================================
+  function initAboutGenieScrollAnimation() {
+    const aboutSection = document.getElementById('about');
+    const genieCards = document.querySelectorAll('.mac-genie-target');
+    if (!aboutSection || !genieCards.length) return;
+
+    // Trigger on scroll via IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          genieCards.forEach((card) => {
+            card.classList.remove('is-genie-minimizing');
+            card.classList.add('is-genie-open');
+          });
+        } else if (entry.boundingClientRect.top > window.innerHeight) {
+          // Reset when scrolled back above to re-trigger on scroll down
+          genieCards.forEach((card) => {
+            card.classList.remove('is-genie-open');
+          });
+        }
+      });
+    }, {
+      threshold: 0.16
+    });
+
+    observer.observe(aboutSection);
+
+    // Interactive macOS traffic light minimize/restore (Yellow dot)
+    genieCards.forEach((card) => {
+      const yellowDot = card.querySelector('.m-dot.yellow');
+      if (yellowDot) {
+        yellowDot.style.cursor = 'pointer';
+        yellowDot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          playClickSound(480, 0.05);
+          if (card.classList.contains('is-genie-open')) {
+            card.classList.remove('is-genie-open');
+            card.classList.add('is-genie-minimizing');
+          } else {
+            card.classList.remove('is-genie-minimizing');
+            card.classList.add('is-genie-open');
+          }
+        });
+      }
+    });
+  }
+
   // Initialize all subsystems on DOM ready
   document.addEventListener('DOMContentLoaded', () => {
     initParallax();
@@ -433,6 +482,7 @@
     initThemeToggle();
     initNavigation();
     initProjectCardsInteractive();
+    initAboutGenieScrollAnimation();
     initLiquidGlassCursor();
   });
 })();

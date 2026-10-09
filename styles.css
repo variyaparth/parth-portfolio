@@ -1794,9 +1794,93 @@ body.studio-dark .about-giant-headline {
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.mac-about-card:hover,
-.mac-edu-card:hover {
+.mac-about-card.is-genie-open:hover,
+.mac-edu-card.is-genie-open:hover {
   transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   macOS GENIE EFFECT (On Scroll Reveal & Interactive Minimize/Restore)
+   Faithful recreation of the iconic macOS Genie Animation (curved lamp warp)
+   ========================================================================== */
+.mac-genie-target {
+  transform-origin: 50% 100%;
+  will-change: transform, clip-path, opacity, filter;
+  opacity: 0;
+  transform: perspective(1200px) translateY(100px) scaleX(0.2) scaleY(0.06) rotateX(16deg);
+  clip-path: polygon(40% 100%, 60% 100%, 55% 100%, 45% 100%);
+  filter: blur(14px);
+}
+
+.mac-genie-target.is-genie-open {
+  animation: macGenieExpand 0.95s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.mac-edu-card.is-genie-open {
+  animation-delay: 0.16s;
+}
+
+.mac-genie-target.is-genie-minimizing {
+  animation: macGenieCompress 0.75s cubic-bezier(0.45, 0, 0.2, 1) forwards;
+}
+
+@keyframes macGenieExpand {
+  0% {
+    opacity: 0;
+    transform: perspective(1200px) translateY(120px) scaleX(0.16) scaleY(0.05) rotateX(20deg);
+    clip-path: polygon(42% 100%, 58% 100%, 54% 100%, 46% 100%);
+    filter: blur(14px);
+  }
+  32% {
+    opacity: 0.8;
+    transform: perspective(1200px) translateY(50px) scaleX(0.52) scaleY(0.42) rotateX(9deg);
+    clip-path: polygon(18% 38%, 82% 38%, 66% 100%, 34% 100%);
+    filter: blur(4px);
+  }
+  64% {
+    opacity: 0.98;
+    transform: perspective(1200px) translateY(-10px) scaleX(1.025) scaleY(1.03) rotateX(-2.5deg);
+    clip-path: polygon(0% 4%, 100% 4%, 88% 100%, 12% 100%);
+    filter: blur(0px);
+  }
+  84% {
+    opacity: 1;
+    transform: perspective(1200px) translateY(2px) scaleX(0.99) scaleY(0.99) rotateX(0.5deg);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    filter: blur(0px);
+  }
+}
+
+@keyframes macGenieCompress {
+  0% {
+    opacity: 1;
+    transform: perspective(1200px) translateY(0) scale(1) rotateX(0deg);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    filter: blur(0px);
+  }
+  30% {
+    opacity: 0.95;
+    transform: perspective(1200px) translateY(-8px) scaleX(1.02) scaleY(1.02) rotateX(-2deg);
+    clip-path: polygon(0% 6%, 100% 6%, 88% 100%, 12% 100%);
+  }
+  68% {
+    opacity: 0.75;
+    transform: perspective(1200px) translateY(50px) scaleX(0.48) scaleY(0.38) rotateX(10deg);
+    clip-path: polygon(18% 42%, 82% 42%, 66% 100%, 34% 100%);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 0;
+    transform: perspective(1200px) translateY(120px) scaleX(0.14) scaleY(0.04) rotateX(20deg);
+    clip-path: polygon(42% 100%, 58% 100%, 54% 100%, 46% 100%);
+    filter: blur(14px);
+  }
 }
 
 .about-window-tag {
